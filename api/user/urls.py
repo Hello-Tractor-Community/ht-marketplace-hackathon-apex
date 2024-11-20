@@ -20,34 +20,6 @@ from user import views
 
 
 urlpatterns = [
-    path("users/", views.UserList.as_view(), name="seller-list"),
-    path("users/<str:pk>/", views.UserDetail.as_view(), name="seller-detail"),
-    path("sellers/", views.SellerList.as_view(), name="seller-list"),
-    path(
-        "sellers/<str:pk>/", views.SellerDetail.as_view(), 
-        name="seller-detail"
-    ),
-    path(
-        "sellers/<str:pk>/reviews/", views.SellerReviewList.as_view(),
-        name="seller-review-list"
-    ),
-    path(
-        "sellers/<str:pk>/reviews/<str:review_pk>/",
-        views.SellerReviewDetail.as_view(),
-        name="seller-review-detail"
-    ),
-    path("buyers/", views.BuyerList.as_view(), name="buyer-list"),
-    path(
-        "buyers/<str:pk>/", views.BuyerDetail.as_view(), name="buyer-detail"
-    ),
-    path("dealers/", views.DealerList.as_view(), name="dealer-list"),
-    path(
-        "dealers/<str:pk>/", views.DealerDetail.as_view(), 
-        name="dealer-detail"
-    ),
-    path("operators/", views.OperatorList.as_view(), name="operator-list"),
-    path(
-        "operators/<str:pk>/", views.OperatorDetail.as_view(),
-        name="operator-detail"
-    ),
+    path("users/", views.UserList.as_view(), name="user-list"),
+    path("users/<str:pk>/", views.UserDetail.as_view(), name="user-detail"),
 ]
