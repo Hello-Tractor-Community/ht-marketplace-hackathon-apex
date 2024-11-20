@@ -3,18 +3,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from product.models import Tractor, Enquiry, Message
+from product.models import Tractor, Enquiry
 from product.serializers import (
     TractorSerializer, 
     TractorLeanSerializer, 
     EnquirySerializer,
     MessageSerializer,
-    TractorReviewSerializer,
-    SellerReviewSerializer,
 )
 from django.db.models import Q
 
-from utils import AuthenticatedAPIView
 
 
 class TractorListView(APIView):

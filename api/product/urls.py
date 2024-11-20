@@ -24,16 +24,6 @@ urlpatterns = [
         views.TractorDetailView.as_view(), 
         name='tractor-detail',
     ),
-    path(
-        'tractors/<str:pk>/reviews/', 
-        views.TractorReviewList.as_view(), 
-        name='tractor-review-list',
-    ),
-     path(
-        'tractors/<str:pk>/reviews/<str:review_pk>/', 
-        views.TractorReviewDetail.as_view(), 
-        name='tractor-review-detail',
-    ),
     path('enquiries/', views.EnquiryListView.as_view(), name='enquiry-list'),
     path(
         'enquiries/<str:pk>/', 

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from product.models import Tractor, Image, Enquiry, Message, Review
-from user.serializers import SellerLeanSerializer
+from product.models import Tractor, Image, Enquiry, Message
+from market.serializers import SellerLeanSerializer
 
 
 class ImageSerializer(serializers.ModelSerializer):
