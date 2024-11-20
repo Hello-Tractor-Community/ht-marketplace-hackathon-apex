@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from market.models import Seller
 from product.models import Tractor, Enquiry
 from product.serializers import (
     TractorSerializer, 
@@ -100,7 +101,9 @@ class TractorDetailView(APIView):
 
     def put(self, request, pk):
         tractor = get_object_or_404(Tractor, pk=pk)
-        serializer = TractorSerializer(tractor, data=request.data, partial=True)
+        serializer = TractorSerializer(
+            tractor, data=request.data, partial=True
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -112,6 +115,54 @@ class TractorDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class SellerTracktorListView(APIView):
+    def get(self, request, pk):
+        page = request.GET.get('page', 1)
+        per_page = request.GET.get('per_page', 10)
+        offset = (int(page) - 1) * int(per_page)
+        limit = offset + int(per_page)
+        seller = get_object_or_404(Seller, pk=pk)
+        tractors = seller.tractor_set.all()
+        count = tractors.count()
+        serializer = TractorSerializer(tractors[offset:limit], many=True)
+        response = {
+            "page": page,
+            "per_page": per_page,
+            "count": count,
+            "results": serializer.data
+        }
+        return Response(response, status=status.HTTP_200_OK)
+    
+    def post(self, request, pk):
+        get_object_or_404(Seller, pk=pk)
+        data = request.data.copy()
+        data['seller'] = pk
+        serializer = TractorSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class SellerTracktorDetailView(APIView):
+    def get(self, request, pk, tractor_pk):
+        tractor = get_object_or_404(Tractor, pk=tractor_pk)
+        serializer = TractorSerializer(tractor)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk, tractor_pk):
+        tractor = get_object_or_404(Tractor, pk=tractor_pk)
+        serializer = TractorSerializer(
+            tractor, data=request.data, partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, tractor_pk):
+        tractor = get_object_or_404(Tractor, pk=tractor_pk)
+        tractor.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class EnquiryListView(APIView):
@@ -197,7 +248,9 @@ class EnquiryMessageDetailView(APIView):
     def put(self, request, pk, message_pk):
         enquiry = get_object_or_404(Enquiry, pk=pk)
         message = get_object_or_404(enquiry.messages, pk=message_pk)
-        serializer = MessageSerializer(message, data=request.data, partial=True)
+        serializer = MessageSerializer(
+            message, data=request.data, partial=True
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

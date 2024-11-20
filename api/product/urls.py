@@ -20,9 +20,17 @@ from product import views
 urlpatterns = [
     path('tractors/', views.TractorListView.as_view(), name='tractor-list'),
     path(
-        'tractors/<str:pk>/', 
-        views.TractorDetailView.as_view(), 
+        'tractors/<str:pk>/', views.TractorDetailView.as_view(),
         name='tractor-detail',
+    ),
+    path(
+        'sellers/<str:pk>/tractors/', views.SellerTracktorListView.as_view(),
+        name='seller-tractor-list'
+    ),
+    path(
+        'sellers/<str:pk>/tractors/<str:tractor_pk>/',
+        views.SellerTracktorDetailView.as_view(),
+        name='seller-tractor-detail'
     ),
     path('enquiries/', views.EnquiryListView.as_view(), name='enquiry-list'),
     path(

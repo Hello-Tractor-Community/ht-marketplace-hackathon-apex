@@ -25,15 +25,6 @@ urlpatterns = [
         "sellers/<str:pk>/", views.SellerDetail.as_view(), 
         name="seller-detail"
     ),
-    path(
-        "sellers/<str:pk>/reviews/", views.SellerReviewList.as_view(),
-        name="seller-review-list"
-    ),
-    path(
-        "sellers/<str:pk>/reviews/<str:review_pk>/",
-        views.SellerReviewDetail.as_view(),
-        name="seller-review-detail"
-    ),
     path("buyers/", views.BuyerList.as_view(), name="buyer-list"),
     path(
         "buyers/<str:pk>/", views.BuyerDetail.as_view(), name="buyer-detail"
