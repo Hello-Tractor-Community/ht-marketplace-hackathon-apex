@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from product.models import Tractor, Image, Enquiry, Message
+from product.models import Tractor, Image, Enquiry
 from market.serializers import SellerLeanSerializer
 
 
@@ -50,9 +50,3 @@ class EnquirySerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Enquiry
-
-class MessageSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = "__all__"
-        model = Message
-        

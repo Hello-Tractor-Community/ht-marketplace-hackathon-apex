@@ -9,7 +9,6 @@ from product.serializers import (
     TractorSerializer, 
     TractorLeanSerializer, 
     EnquirySerializer,
-    MessageSerializer,
 )
 from django.db.models import Q
 
@@ -205,59 +204,4 @@ class EnquiryDetailView(APIView):
         except Enquiry.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         enquiry.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class EnquiryMessageListView(APIView):
-    def get(self, request, pk):
-        # Extract pagination parameters.
-        page = request.GET.get('page', 1)
-        per_page = request.GET.get('per_page', 10)
-        limit = int(per_page)
-        offset = (int(page) - 1) * limit
-        enquiry = get_object_or_404(Enquiry, pk=pk)
-        
-        messages = enquiry.messages.all()
-        count = messages.count()
-        serializer = MessageSerializer(messages[offset:limit], many=True)
-        response = {
-            "page": page,
-            "per_page": per_page,
-            "count":count,
-            "results": serializer.data
-        }
-        return Response(response, status=status.HTTP_200_OK)
-
-    def post(self, request, pk):
-        enquiry = get_object_or_404(Enquiry, pk=pk)
-        serializer = MessageSerializer(data=request.data)
-        if serializer.is_valid():
-            message = serializer.save()
-            enquiry.messages.add(message)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-    
-class EnquiryMessageDetailView(APIView):
-    def get(self, request, pk, message_pk):
-        enquiry  = get_object_or_404(Enquiry, pk=pk)
-        message = get_object_or_404(enquiry.messages, pk=message_pk)
-        serializer = MessageSerializer(message)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def put(self, request, pk, message_pk):
-        enquiry = get_object_or_404(Enquiry, pk=pk)
-        message = get_object_or_404(enquiry.messages, pk=message_pk)
-        serializer = MessageSerializer(
-            message, data=request.data, partial=True
-        )
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, message_pk):
-        enquiry = get_object_or_404(Enquiry, pk=pk)
-        message = get_object_or_404(enquiry.messages, pk=message_pk)
-        message.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
