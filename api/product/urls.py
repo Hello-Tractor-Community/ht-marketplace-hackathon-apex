@@ -38,14 +38,4 @@ urlpatterns = [
         views.EnquiryDetailView.as_view(), 
         name='enquiry-detail'
     ),
-    path(
-        'enquiries/<str:pk>/messages/', 
-        views.EnquiryMessageListView.as_view(), 
-        name='enquiry-message'
-    ),
-    path(
-        'enquiries/<str:pk>/messages/<str:message_pk>/',
-        views.EnquiryMessageDetailView.as_view(),
-        name='enquiry-message-detail'
-    ),
 ]
