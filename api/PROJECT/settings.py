@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'product',
     'market',
     'feedback',
+    'messaging',
 ]
 
 MIDDLEWARE = [
