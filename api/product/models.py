@@ -51,6 +51,7 @@ class Enquiry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     tractors = models.ManyToManyField(Tractor)
     buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    is_sold = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
