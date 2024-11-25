@@ -17,45 +17,45 @@ const lazyLoad = (importFunc) => {
 export const RouteMap = [
   {
     path: "/login",
-    element: lazyLoad(() => import("../../Pages/auth/Login")),
+    element: lazyLoad(() => import("../../pages/auth/Login")),
   },
   {
     path: "all-listings",
-    element: lazyLoad(() => import("../../Pages/marketplace/ListingPage")),
+    element: lazyLoad(() => import("../../pages/marketplace/ListingPage")),
   },
   {
     path: "cart",
-    element: lazyLoad(() => import("../../Pages/marketplace/CartPage")),
+    element: lazyLoad(() => import("../../pages/marketplace/CartPage")),
   },
   {
     path: "/tractor-operators",
-    element: lazyLoad(() => import("../../Pages/marketplace/TractorOperators")),
+    element: lazyLoad(() => import("../../pages/marketplace/TractorOperators")),
   },
   {
     path: "/signup",
-    element: lazyLoad(() => import("../../Pages/auth/Signup")),
+    element: lazyLoad(() => import("../../pages/auth/Signup")),
   },
   {
     path: "/",
-    element: lazyLoad(() => import("../../Pages/marketplace/Homepage")),
+    element: lazyLoad(() => import("../../pages/marketplace/Homepage")),
   },
   {
     path: "/tractor/:id/",
-    element: lazyLoad(() => import("../../Pages/marketplace/ListingDetails")),
+    element: lazyLoad(() => import("../../pages/marketplace/ListingDetails")),
   },
   {
     path: "/settings",
-    element: lazyLoad(() => import("../../Pages/settings/index")),
+    element: lazyLoad(() => import("../../pages/settings/index")),
   },
   {
     path: "/admin",
-    element: lazyLoad(() => import("../../Pages/admin/Homepage")),
+    element: lazyLoad(() => import("../../pages/admin/Homepage")),
   },
 
   {
     path: "/settings/add-listing",
     element: lazyLoad(() =>
-      import("../../Pages/settings/mylistings/AddListing")
+      import("../../pages/settings/mylistings/AddListing")
     ),
   },
   // {
@@ -72,12 +72,12 @@ export const RouteMap = [
   //           children: [
   //             {
   //               path: "",
-  //               element: lazyLoad(() => import("../../Pages/marketplace")),
+  //               element: lazyLoad(() => import("../../pages/marketplace")),
   //               children: [
   //                 {
   //                   path: "",
   //                   element: lazyLoad(() =>
-  //                     import("../../Pages/marketplace/Homepage")
+  //                     import("../../pages/marketplace/Homepage")
   //                   ),
   //                 },
   //                 {
@@ -118,18 +118,18 @@ export const RouteMap = [
   //           children: [
   //             {
   //               path: "",
-  //               element: lazyLoad(() => import("../../Pages/merchants")),
+  //               element: lazyLoad(() => import("../../pages/merchants")),
   //               children: [
   //                 {
   //                   path: "",
   //                   element: lazyLoad(() =>
-  //                     import("../../Pages/merchants/Homepage")
+  //                     import("../../pages/merchants/Homepage")
   //                   ),
   //                 },
   //                 {
   //                   path: "analytics",
   //                   element: lazyLoad(() =>
-  //                     import("../../Pages/merchants/Analytics")
+  //                     import("../../pages/merchants/Analytics")
   //                   ),
   //                 },
   //               ],
@@ -142,11 +142,11 @@ export const RouteMap = [
   //           children: [
   //             {
   //               path: "",
-  //               element: lazyLoad(() => import("../../Pages/admin")),
+  //               element: lazyLoad(() => import("../../pages/admin")),
   //               children: [
   //                 {
   //                   path: "",
-  //                   element: lazyLoad(() => import("../../Pages/admin/Homepage")),
+  //                   element: lazyLoad(() => import("../../pages/admin/Homepage")),
   //                 },
   //                 {
   //                   path: "listings",
@@ -172,19 +172,19 @@ export const RouteMap = [
   //       children: [
   //         {
   //           index: true,
-  //           element: lazyLoad(() => import("../../Pages/settings")),
+  //           element: lazyLoad(() => import("../../pages/settings")),
   //         },
   //         {
   //           path: "profile",
   //           element: lazyLoad(() =>
-  //             import("../../Pages/settings/profile/ProfileDetails")
+  //             import("../../pages/settings/profile/ProfileDetails")
   //           ),
   //           handle: { crumb: () => "Profile" },
   //           children: [
   //             {
   //               path: "edit",
   //               element: lazyLoad(() =>
-  //                 import("../../Pages/settings/profile/EditProfile")
+  //                 import("../../pages/settings/profile/EditProfile")
   //               ),
   //             },
   //           ],
