@@ -20,19 +20,35 @@ from market import views
 
 
 urlpatterns = [
+    path(
+        "sellers/me/", views.CurrentSellerDetail.as_view(), 
+        name="current-seller-details"
+    ),
     path("sellers/", views.SellerList.as_view(), name="seller-list"),
     path(
         "sellers/<str:pk>/", views.SellerDetail.as_view(), 
         name="seller-detail"
     ),
+    path(
+        "buyers/me/", views.CurrentSellerDetail.as_view(), 
+        name="current-buyer-details"
+    ),
     path("buyers/", views.BuyerList.as_view(), name="buyer-list"),
     path(
         "buyers/<str:pk>/", views.BuyerDetail.as_view(), name="buyer-detail"
+    ),
+    path(
+        "dealers/me/", views.CurrentSellerDetail.as_view(), 
+        name="current-dealer-details"
     ),
     path("dealers/", views.DealerList.as_view(), name="dealer-list"),
     path(
         "dealers/<str:pk>/", views.DealerDetail.as_view(), 
         name="dealer-detail"
+    ),
+    path(
+        "operators/me/", views.CurrentSellerDetail.as_view(), 
+        name="current-operator-details"
     ),
     path("operators/", views.OperatorList.as_view(), name="operator-list"),
     path(

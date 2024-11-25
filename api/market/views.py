@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from user.views import AuthenticatedAPIView
+
 from market.models import Buyer, Seller, Dealer, Operator
 from market.serializers import (
     BuyerSerializer,
@@ -45,6 +47,15 @@ class BuyerDetail(APIView):
         buyer_profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+
+class CurrentBuyerDetail(AuthenticatedAPIView):
+    def get(self, request):
+        try:
+            serializer = BuyerSerializer(request.user.buyer)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Buyer.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 class SellerList(APIView):
     def get(self, request):
@@ -89,9 +100,15 @@ class SellerDetail(APIView):
         seller_profile = get_object_or_404(Seller, pk=pk)
         seller_profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
 
-
-
+class CurrentSellerDetail(AuthenticatedAPIView):
+    def get(self, request):
+        try:
+            serializer = SellerSerializer(request.user.seller)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Seller.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 class DealerList(APIView):
@@ -128,6 +145,15 @@ class DealerDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 
+class CurrentDealerDetail(AuthenticatedAPIView):
+    def get(self, request):
+        try:
+            serializer = DealerSerializer(request.user.dealer)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Dealer.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    
+
 class OperatorList(APIView):
     def get(self, request):
         operator_profiles = Operator.objects.all()
@@ -160,3 +186,12 @@ class OperatorDetail(APIView):
         operator_profile =  get_object_or_404(Operator, pk=pk)
         operator_profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CurrentOperatorDetail(AuthenticatedAPIView):
+    def get(self, request):
+        try:
+            serializer = OperatorSerializer(request.user.operator)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Operator.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
