@@ -25,13 +25,4 @@ urlpatterns = [
         "messages/<str:pk>/", views.MessageDetail.as_view(),
         name="message-detail"
     ),
-    path(
-        "users/<str:pk>/messages/", views.UserMessageList.as_view(),
-        name="seller-review-list"
-    ),
-    path(
-        "users/<str:pk>/messages/<str:message_pk>/",
-        views.UserMessageDetail.as_view(),
-        name="seller-review-detail"
-    ),
 ]
