@@ -17,11 +17,11 @@ const lazyLoad = (importFunc) => {
 export const RouteMap = [
   {
     path: "/login",
-    element: lazyLoad(() => import("../../pages/auth/Login")),
+    element: lazyLoad(() => import("../../Pages/auth/Login")),
   },
   {
     path: "all-listings",
-    element: lazyLoad(() => import("../../pages/marketplace/ListingPage")),
+    element: lazyLoad(() => import("../../Pages/marketplace/ListingPage")),
   },
   {
     path: "cart",
@@ -29,23 +29,23 @@ export const RouteMap = [
   },
   {
     path: "/tractor-operators",
-    element: lazyLoad(() => import("../../pages/marketplace/TractorOperators")),
+    element: lazyLoad(() => import("../../Pages/marketplace/TractorOperators")),
   },
   {
     path: "/signup",
-    element: lazyLoad(() => import("../../pages/auth/Signup")),
+    element: lazyLoad(() => import("../../Pages/auth/Signup")),
   },
   {
     path: "/",
-    element: lazyLoad(() => import("../../pages/marketplace/Homepage")),
+    element: lazyLoad(() => import("../../Pages/marketplace/Homepage")),
   },
   {
     path: "/tractor/:id/",
-    element: lazyLoad(() => import("../../pages/marketplace/ListingDetails")),
+    element: lazyLoad(() => import("../../Pages/marketplace/ListingDetails")),
   },
   {
     path: "/settings",
-    element: lazyLoad(() => import("../../pages/settings/index")),
+    element: lazyLoad(() => import("../../Pages/settings/index")),
   },
   {
     path: "/admin",
@@ -55,7 +55,7 @@ export const RouteMap = [
   {
     path: "/settings/add-listing",
     element: lazyLoad(() =>
-      import("../../pages/settings/mylistings/AddListing")
+      import("../../Pages/settings/mylistings/AddListing")
     ),
   },
   // {
