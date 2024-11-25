@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/v1",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 axiosInstance.interceptors.request.use(
