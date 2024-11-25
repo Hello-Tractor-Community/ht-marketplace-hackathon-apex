@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Avenir";
+    src: url("./assets/fonts/avnir_ff/AvenirLTStd-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Avenir";
+    src: url("./assets/fonts/avnir_ff/AvenirLTStd-Book.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Avenir";
+    src: url("./assets/fonts/avnir_ff/AvenirLTStd-Roman.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  :root {
+    /* Base Background and Foreground */
+    --background: 218 65% 100%;
+    --foreground: 218 69% 2%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 15%;
+    --muted: 188 35% 92%;
+    --muted-foreground: 188 11% 36%;
+    --popover: 0 0% 99%;
+    --popover-foreground: 218 69% 1%;
+    --card: 0 0% 99%;
+    --card-foreground: 218 69% 1%;
+    --border: 218 10% 95%;
+    --input: 218 10% 95%;
+    --primary: 13.8 100% 60.78%;
+    --primary-foreground: 218 47% 99%;
+    --secondary: 300 43.28% 26.27%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 193.47 73.13% 39.41%;
+    --accent-foreground: 248 47% 99%;
+    --destructive: 13 98% 27%;
+    --destructive-foreground: 13 98% 87%;
+    --ring: 218 47% 39%;
+    --radius: 0.5rem;
+
+    /* Primary Colors */
+    --primary-sunset-blaze: 12 100% 56%;
+    --primary-hibiscus: 344 92% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Tints for Primary Colors */
+    --primary-sunset-tint-80: 12 100% 90%;
+    --primary-sunset-tint-60: 12 100% 80%;
+    --primary-sunset-tint-40: 12 100% 69%;
+    --primary-sunset-tint-20: 12 100% 59%;
+    --primary-hibiscus-tint-80: 344 92% 92%;
+    --primary-hibiscus-tint-60: 344 92% 82%;
+    --primary-hibiscus-tint-40: 344 92% 72%;
+    --primary-hibiscus-tint-20: 344 92% 63%;
+
+    /* Secondary Colors */
+    --secondary-sage: 120 26% 67%;
+    --secondary-summer-breeze: 186 26% 68%;
+    --secondary-plum: 258 50% 22%;
+    --secondary-charcoal: 0 0% 9%;
+
+    /* Tints for Secondary Colors */
+    --secondary-sage-tint-80: 120 26% 93%;
+    --secondary-sage-tint-60: 120 26% 88%;
+    --secondary-sage-tint-40: 120 26% 82%;
+    --secondary-breeze-tint-80: 186 26% 94%;
+    --secondary-breeze-tint-60: 186 26% 89%;
+    --secondary-breeze-tint-40: 186 26% 84%;
+    --secondary-plum-tint-80: 258 50% 78%;
+    --secondary-plum-tint-60: 258 50% 65%;
+    --secondary-plum-tint-40: 258 50% 53%;
+    --secondary-charcoal-tint-80: 0 0% 82%;
+    --secondary-charcoal-tint-60: 0 0% 65%;
+    --secondary-charcoal-tint-40: 0 0% 47%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 90%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 85%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 88%;
+
+    --primary-sunset-blaze: 12 100% 60%;
+    --primary-hibiscus: 344 92% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary-sage: 120 26% 50%;
+    --secondary-summer-breeze: 186 26% 55%;
+    --secondary-plum: 258 50% 28%;
+    --secondary-charcoal: 0 0% 12%;
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* For Internet Explorer 10+ */
+  scrollbar-width: none;     /* For Firefox */
+}
+

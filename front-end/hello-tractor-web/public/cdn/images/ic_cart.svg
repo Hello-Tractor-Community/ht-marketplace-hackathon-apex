@@ -1,0 +1,9 @@
+<svg id="ic_cart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_442" data-name="Rectangle 442" width="24" height="24" fill="#fff" opacity="0"/>
+  <g id="Group_1424" data-name="Group 1424" transform="translate(-1)">
+    <path id="Path_256" data-name="Path 256" d="M193.316,69h1.312c1.458,0,1.989.333,2.474,1.7L200,79.3a2.585,2.585,0,0,0,2.474,1.7h6.528a2.576,2.576,0,0,0,2.509-1.816l1.8-6.366" transform="translate(-190.316 -64)" fill="none" stroke="#bf3054" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_257" data-name="Path 257" d="M202.543,76l2.188,6.477a2.585,2.585,0,0,0,2.474,1.7h6.528a2.576,2.576,0,0,0,2.509-1.816l1.8-6.366Z" transform="translate(-195.044 -67.183)" fill="none" stroke="#bf3054" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="Ellipse_22" data-name="Ellipse 22" cx="1.5" cy="1.5" r="1.5" transform="translate(11 20.001)" fill="#bf3054"/>
+    <circle id="Ellipse_23" data-name="Ellipse 23" cx="1.5" cy="1.5" r="1.5" transform="translate(17.368 20.001)" fill="#bf3054"/>
+  </g>
+</svg>
