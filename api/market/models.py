@@ -15,7 +15,7 @@ class Seller(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.email
 
 
 class Buyer(models.Model):
@@ -27,7 +27,7 @@ class Buyer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.email
 
 
 class Dealer(models.Model):
@@ -40,7 +40,7 @@ class Dealer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.email
 
 
 class Operator(models.Model):
@@ -52,4 +52,4 @@ class Operator(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.email
