@@ -20,6 +20,10 @@ from user import views
 
 
 urlpatterns = [
+    path(
+        "users/me/", views.CurrentUserDetail.as_view(),
+        name="current-user-detail"
+    ),
     path("users/", views.UserList.as_view(), name="user-list"),
     path("users/<str:pk>/", views.UserDetail.as_view(), name="user-detail"),
 ]
