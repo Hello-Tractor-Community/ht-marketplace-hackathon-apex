@@ -70,10 +70,6 @@ export const RouteMap = [
         element: <ListingPage />,
       },
       {
-        path: "dealers",
-        element: lazyLoad(() => import("../pages/marketplace/DealersPage")),
-      },
-      {
         path: "cart",
         element: <CartPage />,
       },
