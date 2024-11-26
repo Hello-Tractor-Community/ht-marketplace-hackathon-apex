@@ -1,12 +1,12 @@
 import "react-toastify/dist/ReactToastify.css";
-import { RouterProvider } from "./providers/router-provider";
 import { ToastContainer } from "react-toastify";
 import RootContext from "./context/RootContext";
+import { AppRouter } from "./routes";
 
 function App() {
   return (
     <RootContext>
-      <RouterProvider />
+      <AppRouter />
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
