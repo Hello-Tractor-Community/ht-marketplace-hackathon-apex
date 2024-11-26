@@ -63,8 +63,8 @@ const SellerCard = ({ seller }) => {
         <div className='flex flex-col border rounded-xl border-gray-200'>
             <div className="good">
                 <img
-                    src={seller.image}
-                    alt={seller.name}
+                    src={seller?.image}
+                    alt={seller?.name}
                     className="w-full h-40 object-cover rounded-t-lg"
                 />
             </div>
