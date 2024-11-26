@@ -1,13 +1,17 @@
 from rest_framework import serializers
 
 from market.models import Buyer, Seller, Dealer, Operator
-from user.serializers import UserLeanSerializer
+from user.serializers import UserLeanSerializer, UserSerializer
 
 
 class BuyerSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Buyer
+    
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['user'] = UserSerializer(instance.user).data
 
 
 class SellerSerializer(serializers.ModelSerializer):
@@ -15,12 +19,19 @@ class SellerSerializer(serializers.ModelSerializer):
         fields = "__all__"
         model = Seller
 
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['user'] = UserSerializer(instance.user).data
+
 
 class SellerLeanSerializer(serializers.ModelSerializer):
-    user = UserLeanSerializer(read_only=True)
     class Meta:
         fields = ["id", "user"]
         model = Seller
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['user'] = UserSerializer(instance.user).data
 
 
 class DealerSerializer(serializers.ModelSerializer):
@@ -28,8 +39,16 @@ class DealerSerializer(serializers.ModelSerializer):
         fields = "__all__"
         model = Dealer
 
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['user'] = UserSerializer(instance.user).data
+
 
 class OperatorSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = Operator
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['user'] = UserSerializer(instance.user).data
