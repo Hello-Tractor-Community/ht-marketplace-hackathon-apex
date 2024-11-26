@@ -46,6 +46,22 @@ export const getSeller = async (sellerId) => {
  * Get a list of sellers.
  *
  * @param {Object} params - Optional query parameters.
+ * @returns {Promise<SellerResponse[]>} A promise resolving to an array of seller data.
+ */
+export const getRegisteredSeller = async (params) => {
+  const url = "sellers/me";
+  try {
+    const { data } = await axiosInstance.get(url, { params });
+    return data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+/**
+ * Get a list of sellers.
+ *
+ * @param {Object} params - Optional query parameters.
  * @param {number} params.page - The page number.
  * @param {number} params.per_page - The number of sellers per page.
  * @returns {Promise<SellerResponse[]>} A promise resolving to an array of seller data.
