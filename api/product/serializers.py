@@ -38,7 +38,10 @@ class TractorSerializer(serializers.ModelSerializer):
 
 class TractorLeanSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ["id", "name", "price", "images"]
+        fields = [
+            "id", "name", "price", "images", "fuel_type", "description", 
+            "transmission", "milleage"
+        ]
         model = Tractor
 
     def to_representation(self, instance):
