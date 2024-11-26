@@ -22,7 +22,7 @@ const Breadcrumb = ({ name }) => (
       <li className="flex items-center group">
         <List className="h-5 w-5 text-gray-500 group-hover:text-blue-500 transition duration-300" />
         <a
-          href="/tractors"
+          href="/marketplace/tractors"
           className="ml-1 hover:text-blue-500 transition duration-300"
         >
           Tractors
@@ -59,9 +59,8 @@ const ImageGallery = ({ images, currentIndex, setCurrentImageIndex }) => (
       {images.map((image, index) => (
         <div
           key={index}
-          className={`cursor-pointer rounded-lg border-2 ${
-            currentIndex === index ? "border-blue-500" : "border-transparent"
-          }`}
+          className={`cursor-pointer rounded-lg border-2 ${currentIndex === index ? "border-blue-500" : "border-transparent"
+            }`}
           onClick={() => setCurrentImageIndex(index)}
         >
           <img

@@ -7,7 +7,7 @@ import Bookings from "./mylistings/Bookings";
 import ProfileDetails from "./profile/ProfileDetails";
 import ChatSupport from "./ChatSupport";
 
-const Settings = () => {
+const SellerDashboard = () => {
   const [currentTab, setCurrentTab] = useState("Tractor Listings");
 
   return (
@@ -48,4 +48,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SellerDashboard;

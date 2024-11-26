@@ -9,17 +9,30 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
+import useSellerContext from "@/context/SellerContext/useSellerContext";
 
 // eslint-disable-next-line react/prop-types
 const SellerDialog = ({ onRegisterSeller, open, setOpen }) => {
   const navigate = useNavigate();
+  const { sellerProfile } = useSellerContext();
 
   const handleAcknowledge = async () => {
     try {
-      const response = await onRegisterSeller();
-      setOpen(false);
-      if (response.status === 201) {
-        toast.success("Seller profile successfully created!");
+      if (!sellerProfile) {
+        const response = await onRegisterSeller();
+        setOpen(false);
+
+        if (response.status === 201) {
+          toast.success("Seller profile successfully created!");
+          return navigate("/seller-dashboard", { replace: true });
+        } else if (response.status === 400) {
+          toast.error("Redirecting to the seller dashboard");
+          setOpen(false);
+          return navigate("/seller-dashboard", { replace: true });
+        }
+      } else {
+        toast.error("You are already registered as a seller!!");
+        setOpen(false);
         return navigate("/seller-dashboard", { replace: true });
       }
     } catch (error) {

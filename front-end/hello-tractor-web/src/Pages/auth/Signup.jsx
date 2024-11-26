@@ -1,16 +1,15 @@
+import SignUpForm from "../../components/authentication/forms/SignUpForm";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 
-import SignUpForm from '../../components/authentication/forms/SignUpForm'
-import Footer from '../../components/Footer'
-import Navbar from '../../components/Navbar'
-
-const Login = () => {
+const Signup = () => {
   return (
     <div>
       <Navbar />
       <SignUpForm />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Signup;

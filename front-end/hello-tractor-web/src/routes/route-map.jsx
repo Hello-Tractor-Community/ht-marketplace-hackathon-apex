@@ -1,22 +1,32 @@
 import ProtectedAdminAccessRoute from "@/components/authentication/protected-admin-access-route";
 import { ProtectedSellerRoute } from "@/components/authentication/protected-seller-route";
+import ListingDetail from "@/components/marketplace/listings/ListingDetail";
+import AdminHomepage from "@/pages/admin/AdminHomepage";
+import Login from "@/pages/auth/Login";
+import Signup from "@/pages/auth/Signup";
+import CartPage from "@/pages/marketplace/CartPage";
+import Homepage from "@/pages/marketplace/Homepage";
+import ListingPage from "@/pages/marketplace/ListingPage";
+import TractorOperators from "@/pages/marketplace/TractorOperators";
+import SellerDashboard from "@/pages/seller-dashboard";
+import AddListing from "@/pages/seller-dashboard/mylistings/AddListing";
 import { lazyLoad } from "@/utils/helpers/lazyLoad";
 
 export const RouteMap = [
   {
     path: "",
-    element: lazyLoad(() => import("../pages/marketplace/Homepage")),
+    element: <Homepage />,
   },
   {
     path: "/",
     children: [
       {
         path: "login",
-        element: lazyLoad(() => import("../pages/auth/Login")),
+        element: <Login />,
       },
       {
         path: "signup",
-        element: lazyLoad(() => import("../pages/auth/Signup")),
+        element: <Signup />,
       },
     ],
   },
@@ -26,7 +36,7 @@ export const RouteMap = [
     children: [
       {
         path: "",
-        element: lazyLoad(() => import("../pages/admin/Homepage")),
+        element: <AdminHomepage />,
       },
     ],
   },
@@ -36,13 +46,11 @@ export const RouteMap = [
     children: [
       {
         path: "",
-        element: lazyLoad(() => import("../pages/seller-dashboard")),
+        element: <SellerDashboard />,
       },
       {
         path: "add-listing",
-        element: lazyLoad(() =>
-          import("../pages/seller-dashboard/mylistings/AddListing")
-        ),
+        element: lazyLoad(() => <AddListing />),
       },
     ],
   },
@@ -51,25 +59,27 @@ export const RouteMap = [
     children: [
       {
         path: "",
-        element: lazyLoad(() => import("../pages/marketplace/Homepage")),
+        element: <Homepage />,
       },
       {
         path: "tractor-details/:id",
-        element: lazyLoad(() => import("../pages/marketplace/ListingDetails")),
+        element: <ListingDetail />,
       },
       {
         path: "search",
-        element: lazyLoad(() => import("../pages/marketplace/ListingPage")),
+        element: <ListingPage />,
+      },
+      {
+        path: "dealers",
+        element: lazyLoad(() => import("../pages/marketplace/DealersPage")),
       },
       {
         path: "cart",
-        element: lazyLoad(() => import("../pages/marketplace/CartPage")),
+        element: <CartPage />,
       },
       {
         path: "tractor-operators",
-        element: lazyLoad(() =>
-          import("../pages/marketplace/TractorOperators")
-        ),
+        element: <TractorOperators />,
       },
     ],
   },

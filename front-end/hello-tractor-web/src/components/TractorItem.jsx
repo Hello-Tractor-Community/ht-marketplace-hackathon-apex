@@ -95,7 +95,7 @@ const TractorItem = ({ id }) => {
         </div>
 
         {/* Edit and delete buttons */}
-        <div className="py-2 bg-card rounded-lg flex justify-between gap-3 mt-2">
+        <div className="py-2 bg-card rounded-lg flex justify-between gap-3 mt-4">
           <Button
             variant="outline"
             className="w-full text-xs py-1.5 transition duration-200 ease-in-out hover:bg-muted-foreground focus:ring-2 focus:ring-primary"

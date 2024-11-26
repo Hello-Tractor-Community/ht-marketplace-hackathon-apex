@@ -37,7 +37,19 @@ export const handleError = (error) => {
     }
 
     error.response.status === 401 && toast.error("Invalid credentials!");
-    error.response.status === 403 && toast.error("Forbidden!");
+    error.response.status === 403 && axiosInstance.interceptors.request.use(
+  function (config) {
+    const accessToken = localStorage.getItem("HT_ACCESS_TOKEN");
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
     error.response.status === 404 && toast.error("Not found!");
     error.response.status === 500 && toast.error("Internal server error!");
   } else if (error.request) {

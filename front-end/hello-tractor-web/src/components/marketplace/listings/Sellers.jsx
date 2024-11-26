@@ -47,8 +47,8 @@ const Sellers = () => {
 
     return (
         <div className="py-5 px-4 sm:px-8 lg:px-16 overflow-hidden">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Dealers</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Sellers</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {sellers.map((seller, index) => (
                     <SellerCard key={index} seller={seller} />
                 ))}
@@ -63,8 +63,8 @@ const SellerCard = ({ seller }) => {
         <div className='flex flex-col border rounded-xl border-gray-200'>
             <div className="good">
                 <img
-                    src={seller?.image}
-                    alt={seller?.name}
+                    src={seller.image}
+                    alt={seller.name}
                     className="w-full h-40 object-cover rounded-t-lg"
                 />
             </div>

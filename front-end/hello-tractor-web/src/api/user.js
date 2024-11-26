@@ -102,6 +102,32 @@ export const updateUser = async (userId, payload) => {
 };
 
 /**
+ * Check if a user exists by email, and create one if not found.
+ *
+ * @param {CreateUserPayload} payload - The payload for creating or checking the user.
+ * @returns {Promise<UserResponse>} The response containing the user data.
+ */
+export const getOrCreateUser = async (payload) => {
+  const { firebase_id } = payload;
+  const url = "/users/";
+  try {
+    // Search for the user by email
+    const { data: userList } = await axiosInstance.get(url, { params: { firebase_id } });
+    
+    if (userList.count > 0) {
+      // User exists; return the first match
+      return userList.results[0];
+    }
+
+    // User does not exist; create a new user
+    const createdUser = await createUser(payload);
+    return createdUser;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+/**
  * Delete a user by ID.
  *
  * @param {string} userId - The ID of the user to delete.

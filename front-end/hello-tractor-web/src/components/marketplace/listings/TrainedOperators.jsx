@@ -36,7 +36,7 @@ const TrainedOperators = () => {
     return (
         <div className="py-5 px-4 sm:px-8 lg:px-16 overflow-hidden">
             <h2 className="text-2xl font-bold text-foreground mb-4">Trained Tractor Operators</h2>
-            <div className="grid  grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                 {operators.map((operator, index) => (
                     <OperatorCard key={index} operator={operator} />
                 ))}

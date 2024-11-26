@@ -34,7 +34,7 @@ const Listing = () => {
             Featured Listings
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 min-w-[120%]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {listings.map((tractor) => (
             <SingleListing key={tractor.id} id={tractor.id} />
           ))}
