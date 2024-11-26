@@ -44,6 +44,22 @@ export const getUser = async (userId) => {
 };
 
 /**
+ * Get a log in and authenticated user.
+ *
+ * @param {Object} params - Optional query parameters.
+ * @returns {Promise<UserResponse>} A promise resolving to the response data.
+ */
+export const getLoggedInUser = async (params) => {
+  const url = "/users/me";
+  try {
+    const { data } = await axiosInstance.get(url, { params });
+    return data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+/**
  * Get a list of users.
  *
  * @param {Object} params - Optional query parameters.
