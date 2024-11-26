@@ -61,7 +61,7 @@ Our mission is to enhance the agricultural ecosystem by making it easier for far
   - **Frontend**: Deployed on **Vercel**, ensuring global distribution and performance.
   - **Backend**: Hosted on **Digital Ocean**, providing flexibility and control over server resources.
   
-  - Live frontend link: [Hello Tractor Apex Website](https://hello-tractor-web-apex.vercel.app/)
+  - Live frontend link: [Hello Tractor Apex Website](http://134.209.207.85)
   - Backend API: [http://134.209.207.85/v1](http://134.209.207.85/v1)
 
 ### **Routing & Components**
