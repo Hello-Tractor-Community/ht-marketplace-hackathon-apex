@@ -12,6 +12,7 @@ class BuyerSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret['user'] = UserSerializer(instance.user).data
+        return ret
 
 
 class SellerSerializer(serializers.ModelSerializer):
@@ -22,6 +23,7 @@ class SellerSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret['user'] = UserSerializer(instance.user).data
+        return ret
 
 
 class SellerLeanSerializer(serializers.ModelSerializer):
@@ -32,6 +34,7 @@ class SellerLeanSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret['user'] = UserSerializer(instance.user).data
+        return ret
 
 
 class DealerSerializer(serializers.ModelSerializer):
@@ -42,7 +45,7 @@ class DealerSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret['user'] = UserSerializer(instance.user).data
-
+        return ret
 
 class OperatorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -52,3 +55,4 @@ class OperatorSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super().to_representation(instance)
         ret['user'] = UserSerializer(instance.user).data
+        return ret
