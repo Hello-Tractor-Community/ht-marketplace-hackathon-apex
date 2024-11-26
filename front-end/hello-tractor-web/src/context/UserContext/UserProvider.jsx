@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase";
 import UserContext from "./UserContext";
-import { createUser, getUsers } from "@/api/user";
+import { createUser, getLoggedInUser } from "@/api/user";
 
 const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -14,15 +14,7 @@ const UserProvider = ({ children }) => {
       if (firebaseUser) {
         try {
           const { uid, email, displayName } = firebaseUser;
-
-          // Fetch all users from the backend
-          const users = await getUsers();
-
-          // Filter to find the user with the matching firebase_id
-          let user =
-            users.results.length > 0
-              ? users.results.find((u) => u.firebase_id === uid)
-              : null;
+          let user = await getLoggedInUser();
 
           if (!user) {
             console.log("Creating user");
@@ -33,7 +25,7 @@ const UserProvider = ({ children }) => {
             });
           }
 
-          setCurrentUser(user);
+          setCurrentUser({ ...user, url: firebaseUser.photoURL });
         } catch (error) {
           console.error("Failed to fetch or create user:", error);
         }
