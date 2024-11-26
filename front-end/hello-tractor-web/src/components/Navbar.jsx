@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
-import { auth } from '/src/Firebase/Firebase';
-import { Link } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useState, useEffect } from "react";
+import { auth } from "/src/Firebase/Firebase";
+import { Link } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { Button } from "./ui/button";
+import SecretAdminDialog from "./authentication/admin-login-dialog";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const [searchVisible, setSearchVisible] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   // Check if the user is authenticated
   useEffect(() => {
@@ -20,7 +24,7 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      setUser(null);  // Reset user state on sign-out
+      setUser(null); // Reset user state on sign-out
       localStorage.removeItem("HT_ACCESS_TOKEN");
     } catch (error) {
       console.error("Error signing out: ", error.message);
@@ -30,17 +34,26 @@ const Navbar = () => {
   // Handle scroll to show the search form
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) { // Show search after scrolling 100px
+      if (window.scrollY > 100) {
+        // Show search after scrolling 100px
         setSearchVisible(true);
       } else {
         setSearchVisible(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const adminSecretDoor = () => {
+    setClickCount((prev) => prev + 1);
+    if (clickCount + 1 === 3) {
+      setClickCount(0);
+      setDialogOpen(true);
+    }
+  };
 
   return (
     <nav className="bg-white w-full top-0 left-0 right-0 z-50 shadow-md transition-all sticky">
@@ -49,7 +62,11 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-4">
             <a href="/" className="text-xl font-bold text-gray-800">
-              <img src="/cdn/images/logo.svg" alt="Hello Tractor Logo" className="h-10" />
+              <img
+                src="/cdn/images/logo.svg"
+                alt="Hello Tractor Logo"
+                className="h-10"
+              />
             </a>
 
             {/* Search Bar */}
@@ -64,7 +81,10 @@ const Navbar = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="flex items-center justify-center rounded-r-lg p-2  bg-[#E91A47] hover:bg-[#C91C40] transition-all">
+                <button
+                  type="submit"
+                  className="flex items-center justify-center rounded-r-lg p-2  bg-[#E91A47] hover:bg-[#C91C40] transition-all"
+                >
                   <svg
                     className="h-5 w-5 text-white"
                     viewBox="0 0 24 24"
@@ -85,15 +105,23 @@ const Navbar = () => {
           {/* Right side: Auth & Cart */}
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex space-x-6">
-              <Link to={`/all-listings`} className="text-gray-600 hover:text-gray-900 transition-all">Tractor Listings</Link>
-              <Link to={`/tractor-operators`} className="text-gray-600 hover:text-gray-900 transition-all">Tractor Operators</Link>
-
+              <Link to={`/seller-dashboard`} className="transition-all">
+                <Button onClick={() => adminSecretDoor()}>Dashboard</Button>
+              </Link>
+              <Link
+                to={`/marketplace/tractor-operators`}
+                className="text-gray-600 hover:text-gray-900 transition-all"
+              >
+                <Button>Tractor Operators</Button>
+              </Link>
             </div>
 
             {/* User Authentication */}
             {user ? (
-              <div className="flex flex-row gap-2 items-center">
-                <span className="text-gray-800">{user?.displayName || 'User'}</span>
+              <div className="flex flex-row gap-2 items-center mb-1">
+                <span className="text-gray-800">
+                  {user?.displayName || "User"}
+                </span>
                 <div className="h-6 border-l border-gray-700"></div>
                 <button
                   onClick={handleSignOut}
@@ -105,9 +133,19 @@ const Navbar = () => {
             ) : (
               // If user is not logged in, show sign in and sign up options
               <div className="flex flex-row gap-2 items-center">
-                <a href="/login" className="text-gray-600 hover:text-gray-900 transition-all">Sign In</a>
+                <a
+                  href="/login"
+                  className="text-gray-600 hover:text-gray-900 transition-all"
+                >
+                  Sign In
+                </a>
                 <div className="h-6 border-l border-gray-700"></div>
-                <a href="/signup" className="text-gray-600 hover:text-gray-900 transition-all">Sign Up</a>
+                <a
+                  href="/signup"
+                  className="text-gray-600 hover:text-gray-900 transition-all"
+                >
+                  Sign Up
+                </a>
               </div>
             )}
 
@@ -122,7 +160,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav >
+
+      <SecretAdminDialog open={dialogOpen} setOpen={setDialogOpen} />
+    </nav>
   );
 };
 
