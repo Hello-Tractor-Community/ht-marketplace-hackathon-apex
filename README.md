@@ -71,15 +71,6 @@ The platform’s navigation is structured around the following key routes and pa
 2. **`/admin`**: Admin dashboard for moderating listings and managing users.
    - Route component: `Admin.js`
 3. **`/settings`**: Page for user account settings and preferences.
-   - Route component: `Settings.js`
-4. **`/my-listings`**: Shows the user's own listings for sale or service.
-   - Route component: `MyListings.js`
-5. **`/inbox`**: Messaging system for buyers and sellers.
-   - Route component: `Inbox.js`
-6. **`/bookings`**: Displays tractor bookings and services requested.
-   - Route component: `Bookings.js`
-7. **`/profile`**: Displays the user’s profile information and allows updates.
-   - Route component: `Profile.js`
 
 Each route has been carefully designed to ensure that users can navigate easily and efficiently between different sections of the platform.
 
