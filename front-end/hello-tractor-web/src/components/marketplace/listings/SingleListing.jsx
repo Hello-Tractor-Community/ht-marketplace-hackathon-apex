@@ -57,7 +57,10 @@ const SingleListing = ({ id }) => {
       {/* Details Section */}
       <div className="flex flex-col justify-between flex-1 overflow-hidden">
         {/* Title */}
-        <Link to={`/tractor/${tractor.id}`} className="overflow-hidden">
+        <Link
+          to={`/marketplace/tractor-details/${tractor.id}`}
+          className="overflow-hidden"
+        >
           <h2 className="text-sm font-semibold text-gray-800 line-clamp-2">
             {tractor.description || "Unnamed Tractor"}
           </h2>
